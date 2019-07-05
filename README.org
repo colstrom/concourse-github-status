@@ -20,12 +20,12 @@ Add the resource to your pipeline's ~resource_types~ (requires Concourse 0.74.0+
 
 * Source Configuration
 
-|--------------+----------+---------------------------------------------|
-| Name         | Required | Description                                 |
-|--------------+----------+---------------------------------------------|
-| repo         | Yes      | The GitHub repository in ~user/repo~ format |
-| access_token | Yes      | The access token to use with the GitHub API |
-|--------------+----------+---------------------------------------------|
+|--------------+----------+----------------------------------------------------------------|
+| Name         | Required | Description                                                    |
+|--------------+----------+----------------------------------------------------------------|
+| repo         | Yes      | The GitHub repository in ~user/repo~ format                    |
+| access_token | Yes      | The access token to use with the GitHub API                    |
+|--------------+----------+----------------------------------------------------------------|
 
 * Behaviour
 
@@ -35,35 +35,35 @@ Add the resource to your pipeline's ~resource_types~ (requires Concourse 0.74.0+
 
 To set a single status for the current commit of the repository specify these parameters:
 
-|-------------+----------+-----------+--------------------------------------------|
-| Name        | Required | Default   | Description                                |
-|-------------+----------+-----------+--------------------------------------------|
-| path        | Yes      |           | Relative path to the repository            |
-| state       | Yes      |           | One of ~pending~, ~success~, or ~failure~  |
-| context     | No       | concourse | The ~context~ for the status being updated |
-| description | No       |           | A description of the context.              |
-|-------------+----------+-----------+--------------------------------------------|
+|-------------+----------+-----------+-----------------------------------------------------|
+| Name        | Required | Default   | Description                                         |
+|-------------+----------+-----------+-----------------------------------------------------|
+| path        | Yes      |           | Ref to use, or relative path to file containing ref |
+| state       | Yes      |           | One of ~pending~, ~success~, or ~failure~           |
+| context     | No       | concourse | The ~context~ for the status being updated          |
+| description | No       |           | A description of the context.                       |
+|-------------+----------+-----------+-----------------------------------------------------|
 
 It is also possible to set multiple statuses at the same time. This is useful for adding multiple ~pending~ statuses
 initially which will be updated by later jobs to the corresponding state, for example.
 This can be done by specifying a ~statuses~ array:
 
-|-------------+----------+-----------+--------------------------------------------|
-| Name        | Required | Default   | Description                                |
-|-------------+----------+-----------+--------------------------------------------|
-| path        | Yes      |           | Relative path to the repository            |
-| statuses    | Yes      |           | Array of status objects                    |
-|-------------+----------+-----------+--------------------------------------------|
+|-------------+----------+-----------+-----------------------------------------------------|
+| Name        | Required | Default   | Description                                         |
+|-------------+----------+-----------+-----------------------------------------------------|
+| path        | Yes      |           | Ref to use, or relative path to file containing ref |
+| statuses    | Yes      |           | Array of status objects                             |
+|-------------+----------+-----------+-----------------------------------------------------|
 
 Each of the status objects supports the following parameters:
 
-|-------------+----------+-----------+--------------------------------------------|
-| Name        | Required | Default   | Description                                |
-|-------------+----------+-----------+--------------------------------------------|
-| state       | Yes      |           | One of ~pending~, ~success~, or ~failure~  |
-| context     | No       | concourse | The ~context~ for the status being updated |
-| description | No       |           | A description of the context.              |
-|-------------+----------+-----------+--------------------------------------------|
+|-------------+----------+-----------+-----------------------------------------------------|
+| Name        | Required | Default   | Description                                         |
+|-------------+----------+-----------+-----------------------------------------------------|
+| state       | Yes      |           | One of ~pending~, ~success~, or ~failure~           |
+| context     | No       | concourse | The ~context~ for the status being updated          |
+| description | No       |           | A description of the context.                       |
+|-------------+----------+-----------+-----------------------------------------------------|
 
 ** ~check~ Get a list of available statuses
 
@@ -78,12 +78,12 @@ Each of the status objects supports the following parameters:
 Fetches the state of ~context~ for the current commit of the repository at
 ~path~, and write it to ~{context}.state~
 
-|-------------+----------+-----------+--------------------------------------------|
-| Name        | Required | Default   | Description                                |
-|-------------+----------+-----------+--------------------------------------------|
-| path        | Yes      |           | Relative path to the repository            |
-| context     | No       | concourse | The ~context~ for the status being updated |
-|-------------+----------+-----------+--------------------------------------------|
+|-------------+----------+-----------+-----------------------------------------------------|
+| Name        | Required | Default   | Description                                         |
+|-------------+----------+-----------+-----------------------------------------------------|
+| path        | Yes      |           | Ref to use, or relative path to file containing ref |
+| context     | No       | concourse | The ~context~ for the status being updated          |
+|-------------+----------+-----------+-----------------------------------------------------|
 
 * License
 

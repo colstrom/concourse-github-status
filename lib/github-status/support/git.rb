@@ -17,10 +17,16 @@ module GitHubStatus
 
       Contract None => String
       def sha
-        @sha ||= if File.file? "#{workdir}/#{path}"
-          File.read("#{workdir}/#{path}").chomp
-        else
-          git.revparse 'HEAD'
+        refs = %w(#{path} git.remotes[0]/#{path} HEAD)
+        if File.file? "#{workdir}/#{path}"
+          refs.unshift File.read("#{workdir}/#{path}").chomp
+        end
+        until @sha
+          begin
+            @sha ||= git.revparse(refs.shift)
+          rescue ::Git::GitExecuteError
+            nil
+          end
         end
       end
     end
