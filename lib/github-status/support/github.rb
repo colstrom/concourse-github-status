@@ -10,8 +10,8 @@ module GitHubStatus
 
       Contract None => Octokit::Client
       def github
-        Octokit.api_endpoint = api_endpoint
-        Octokit.web_endpoint = web_endpoint
+        Octokit.api_endpoint = api_endpoint if api_endpoint
+        Octokit.web_endpoint = web_endpoint if web_endpoint
         @github ||= Octokit::Client.new access_token: access_token
       end
 

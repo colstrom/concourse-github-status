@@ -25,7 +25,7 @@ Add the resource to your pipeline's ~resource_types~ (requires Concourse 0.74.0+
 |--------------+----------+-------------------------------------------------------------|
 | repo         | Yes      | The GitHub repository in ~user/repo~ format                 |
 | access_token | Yes      | The access token to use with the GitHub API                 |
-| api_endpoint | No       | API endpoint of a GitHub Enterprise installation            |
+| api_endpoint | No       | Base API URL of a GitHub Enterprise installation            |
 | web_endpoint | No       | Base web URL of a GitHub Enterprise Installation            |
 |--------------+----------+-------------------------------------------------------------|
 
