@@ -26,6 +26,16 @@ module GitHubStatus
       def branch
         @branch ||= source.fetch('branch') { 'master' }
       end
+
+      Contract None => String
+      def api_endpoint
+        @api_endpoint ||= source.fetch('api_endpoint') { nil }
+      end
+
+      Contract None => String
+      def web_endpoint
+        @web_endpoint ||= source.fetch('web_endpoint') { nil }
+      end
     end
   end
 end
